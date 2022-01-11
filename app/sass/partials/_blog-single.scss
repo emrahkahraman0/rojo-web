@@ -47,7 +47,7 @@
             &::before {
               position: absolute;
               width: 0;
-              margin: -4px 0;
+              margin: -7px 0;
               @include transition(0.4s);
               content: "";
               background-color: $secondary-color;
@@ -76,7 +76,7 @@
             left: 0;
             z-index: 1;
             padding: 15px 0 15px 10px;
-            background-color: $four-color;
+            background-color: $three-color;
             opacity: 0;
             visibility: hidden;
             @include transition(0.4s);
@@ -96,7 +96,7 @@
                 &::before {
                   position: absolute;
                   width: 0;
-                  margin: -3px 0;
+                  margin: -5px 0;
                   @include transition(0.4s);
                   content: "";
                   background-color: $secondary-color;
@@ -125,7 +125,7 @@
             &::before {
               position: absolute;
               width: 0;
-              margin: -5px 0;
+              margin: -7px 0;
               @include transition(0.4s);
               content: "";
               background-color: $secondary-color;
@@ -285,5 +285,33 @@
     }
     //hamburger
     .hamburger {top: 52px}
+  }
+}
+
+//Blog_Single#
+#blog_single {
+  width: 100%;
+  padding: 100px 0 100px 0;
+  background-color: $three-color;
+  //blog_single
+  .blog_single {
+    //&_detail
+    &_detail {
+      h6 {
+        color: $base-color;
+        font-size: 24px;
+        line-height: 28px;
+        @include weight(500);
+      }
+      //detail_desc
+      .detail_desc {
+        padding-top: 25px;
+        //detail_item
+        .detail_item {
+          @include flex;
+          @include align-items(center);
+        }
+      }
+    }
   }
 }

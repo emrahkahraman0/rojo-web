@@ -39,7 +39,7 @@
           &::before {
             position: absolute;
             width: 0;
-            margin: -4px 0;
+            margin: -7px 0;
             @include transition(0.4s);
             content: "";
             background-color: $secondary-color;
@@ -68,7 +68,7 @@
           left: 0;
           z-index: 1;
           padding: 15px 0 15px 10px;
-          background-color: $four-color;
+          background-color: $three-color;
           opacity: 0;
           visibility: hidden;
           @include transition(0.4s);
@@ -117,7 +117,7 @@
           &::before {
             position: absolute;
             width: 0;
-            margin: -5px 0;
+            margin: -7px 0;
             @include transition(0.4s);
             content: "";
             background-color: $secondary-color;
