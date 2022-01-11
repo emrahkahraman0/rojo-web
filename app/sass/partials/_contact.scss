@@ -293,4 +293,241 @@
   width: 100%;
   padding: 100px 0 100px 0;
   background-color: $three-color;
+  //our_contact
+  .our_contact {
+    //&_info
+    &_info {
+      p {
+        color: $base-color;
+        font-size: $large-size;
+        line-height: 24px;
+        letter-spacing: 0.4px;
+        @include weight(400);
+        margin-bottom: 0;
+      }
+      //icons
+      .icons {
+        padding-top: 50px;
+        //icon_item
+        .icon_item {
+          @include flex;
+          @include align-items(center);
+          padding-bottom: 70px;
+          &:last-child {
+            padding-bottom: 0;
+          }
+          //icon
+          .icon {
+            width: 70px;
+            height: 70px;
+            line-height: 70px;
+            text-align: center;
+            background-color: $secondary-color;
+            @include border-radius(50%);
+            i {font-size: 30px; color: $primary-color;}
+          }
+          //text
+          .text {
+            padding-left: 20px;
+            h5,h6 {margin-bottom: 0}
+            h5 {
+              color: $secondary-color;
+              font-size: 18px;
+              line-height: 24px;
+              letter-spacing: 0.3px;
+              text-transform: capitalize;
+              @include weight(500);
+              padding-bottom: 10px;
+            }
+            h6,a {
+              color: $base-color;
+              font-size: 21px;
+              line-height: 24px;
+              text-decoration: none;
+            }
+          }
+        }
+      }
+    }
+    //&_form
+    &_form {
+      //form
+      form {
+        label {
+          margin-bottom: 0;
+          font-size: $large-size;
+          color: $base-color;
+          @include weight(400);
+          line-height: normal;
+          padding-bottom: 10px;
+        }
+        input {
+          width: 100%;
+          height: 50px;
+          padding: 10px;
+          background-color: $base-color;
+          margin-bottom: 20px;
+        }
+        textarea {
+          width: 100%;
+          padding: 10px;
+          background-color: $base-color;
+        }
+        button {
+          margin-top: 30px;
+          background-color: $secondary-color;
+          padding: 15px 25px;
+          a {
+            color: $six-color;
+            font-size: 18px;
+            @include weight(400);
+            text-decoration: none;
+            line-height: normal;
+          }
+        }
+      }
+      p {
+        padding-top: 30px;
+        color: $base-color;
+        font-size: $large-size;
+        letter-spacing: 0.4px;
+        line-height: 24px;
+        font-style: italic;
+        @include weight(400);
+        margin-bottom: 0;
+      }
+    }
+    //Notebook
+    @include notebook {
+      text-align: center;
+      //info
+      &_info {
+        //icons
+        .icons {
+          //icon_item
+          .icon_item {
+            @include flex;
+            @include flex-direction(column);
+            @include align-items(center);
+            .text {
+              padding: 20px 0 0 0;
+            }
+          }
+        }
+      }
+      //&_form
+      &_form {
+        margin-top: 50px;
+        //form
+        form {
+          button {width: 100%; padding: 15px 0;}
+        }
+      }
+    }
+    //Tablet
+    @include tablet {
+      //info
+      &_info {
+        //icons
+        .icons {
+          //icon_item
+          .icon_item {
+            padding-bottom: 50px;
+            //icon
+            .icon {
+              width: 50px; height: 50px; line-height: 50px;
+              i {font-size: 20px;}
+            }
+            //text
+            .text {
+              h5 {font-size: $large-size; line-height: 22px; padding-bottom: 5px;}
+              h6,a {font-size: 18px;}
+            }
+          }
+        }
+      }
+      //&_form
+      &_form {
+        //form
+        form {
+          input {height: 40px;}
+          button {
+            width: 100%; padding: 10px 0;
+            a {font-size: $large-size}
+          }
+        }
+      }
+    }
+    //X-Tablet
+    @include x-tablet {
+      //info
+      &_info {
+        p {font-size: $small-size; line-height: 20px;}
+        //icons
+        .icons {
+          //icon_item
+          .icon_item {
+            padding-bottom: 40px;
+            //icon
+            .icon {
+              width: 40px; height: 40px; line-height: 40px;
+              i {font-size: $large-size;}
+            }
+            //text
+            .text {
+              h5 {font-size: $small-size; line-height: 20px;}
+              h6,a {font-size: $large-size;}
+            }
+          }
+        }
+      }
+      //&_form
+      &_form {
+        //form
+        form {
+          label {font-size: $small-size;}
+          button {
+            width: 100%; padding: 7px 0;
+            a {font-size: $small-size}
+          }
+        }
+        p {font-size: $small-size; line-height: 20px;}
+      }
+    }
+    //Mobil
+    @include mobil {
+      //info
+      &_info {
+        p {font-size: 12px; line-height: 18px;}
+        //icons
+        .icons {
+          //icon_item
+          .icon_item {
+            padding-bottom: 30px;
+            //icon
+            .icon {
+              i {font-size: $small-size;}
+            }
+            //text
+            .text {
+              h5 {font-size: 12px; line-height: 18px;}
+              h6,a {font-size: $small-size;}
+            }
+          }
+        }
+      }
+      //&_form
+      &_form {
+        //form
+        form {
+          label {font-size: 12px; line-height: 18px;}
+          button {
+            width: 100%; padding: 7px 0;
+            a {font-size: 12px;}
+          }
+        }
+        p {font-size: 12px; line-height: 18px;}
+      }
+    }
+  }
 }
