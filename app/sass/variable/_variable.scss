@@ -1,0 +1,107 @@
+//Variable.scss
+
+$base-color: #fff;
+$primary-color: #0C0023;
+$secondary-color: #FCCA2E;
+$three-color: #090118;
+$four-color: #b2bec3;
+$five-color: #0F012C;
+$six-color: #000000;
+$family: 'Roboto', sans-serif;
+$large-size: 16px;
+$small-size: 14px;
+
+//Media
+
+//X-Large
+@mixin x-large() {
+    @media only screen and (max-width: 1400px) {
+        @content;
+    }
+  }
+  //Large
+  @mixin large() {
+    @media only screen and (max-width: 1200px) {
+        @content;
+    }
+  }
+  //Notebook
+  @mixin notebook() {
+    @media only screen and (max-width: 992px) {
+        @content;
+    }
+  }
+  //Tablet
+  @mixin tablet() {
+    @media only screen and (max-width: 768px) {
+        @content;
+    }
+  }
+  //X-Tablet
+  @mixin x-tablet() {
+    @media only screen and (max-width: 575px) {
+        @content;
+    }
+  }
+  //Mobil
+  @mixin mobil() {
+    @media only screen and (max-width: 480px) {
+        @content;
+    }
+  }
+  //Small
+  @mixin small() {
+    @media only screen and (max-width: 350px) {
+        @content;
+    }
+  }
+  //X-Small
+  @mixin x-small() {
+    @media only screen and (max-width: 250px) {
+        @content;
+    }
+  }
+  //X
+  @mixin x() {
+    @media only screen and (max-width: 190px) {
+        @content;
+    }
+  }
+  
+  //Font-Weight
+  @mixin weight($weight) {
+    $weights: (
+      thin: 100,
+      extra-light: 200,
+      ultra-light: 200,
+      light: 300,
+      normal: 400,
+      book: 400,
+      regular: 400,
+      medium: 500,
+      semi-bold: 600,
+      demi-bold: 600,
+      bold: 700,
+      extra-bold: 800,
+      ultra-bold: 900,
+      heavy: 900,
+      black: 900,
+      ultra: 900,
+      ultra-black: 900,
+      extra-ultra: 900
+    );
+  
+    $output: $weight;
+    @if map-has-key($weights, $weight) {
+      $output: map-get($weights, $weight);
+    }
+  
+    font-weight: $output;
+  
+  }
+
+//İmg-Fluid
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}

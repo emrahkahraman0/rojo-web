@@ -1,0 +1,1074 @@
+/////ABOUT
+
+//About_page
+#about_page {
+  width: 100%;
+  height: 500px;
+  @include bg-size(cover);
+  background: linear-gradient( to bottom, rgba(12, 0, 35, .8), rgba(12, 0, 35, .8)), url("https://via.placeholder.com/1920x500");
+  background-position: center;
+  position: relative;
+  //Header#
+  #header {
+    width: 100%;
+    background-color: transparent;
+    position: fixed;
+    top: 50px;
+    z-index: 2;
+    //header-wrapper
+    .header-wrapper {
+      @include flex();
+      @include justify-content(space-between);
+      @include align-items(center);
+      height: 150px;
+      position: relative;
+      //logo
+      .logo {
+        position: relative;
+        z-index: 3;
+        img {cursor: pointer;}
+      }
+      //menu
+      .menu {
+        margin-bottom: 0;
+        >li {
+          display: inline-block;
+          position: relative;
+          margin-right: 30px;
+          &:last-child {
+            margin-right: 0;
+          }
+          >a {
+            color: $base-color;
+            @include weight(semi-bold);
+            text-decoration: none;
+            font-size: $large-size;
+            position: relative;
+            &::before {
+              position: absolute;
+              width: 0;
+              margin: -4px 0;
+              @include transition(0.4s);
+              content: "";
+              background-color: $secondary-color;
+              height: 4px;
+              border-radius: 2px;
+              left: 0;
+              bottom: 0;
+            }
+            &:hover {
+              color: $secondary-color;
+              &::before {
+                width: 100%;
+              }
+            }
+            &:not(:only-child):after {
+              padding-left: 10px;
+              content: ' \e805';
+              font-family: "rojo-font";
+            }
+          }
+          ul {
+            margin-bottom: 0;
+            width: 200px;
+            position: absolute;
+            top: 34px;
+            left: 0;
+            z-index: 1;
+            padding: 15px 0 15px 10px;
+            background-color: $four-color;
+            opacity: 0;
+            visibility: hidden;
+            @include transition(0.4s);
+            li {
+              display: block;
+              padding-bottom: 15px;
+              &:last-child {
+                padding-bottom: 0;
+              }
+              a {
+                color: $base-color;
+                @include weight(bold);
+                text-decoration: none;
+                font-size: $large-size;
+                text-transform: uppercase;
+                position: relative;
+                &::before {
+                  position: absolute;
+                  width: 0;
+                  margin: -3px 0;
+                  @include transition(0.4s);
+                  content: "";
+                  background-color: $secondary-color;
+                  height: 3px;
+                  border-radius: 2px;
+                  left: 0;
+                  bottom: 0;
+                }
+                &:hover {
+                  color: $secondary-color;
+                  &::before {
+                    width: 100%;
+                  }
+                }
+              }
+            }
+          }
+          &:hover {
+            ul {
+              opacity: 1;
+              visibility: visible;
+            }
+          }
+          .active {
+            position: relative;
+            &::before {
+              position: absolute;
+              width: 0;
+              margin: -5px 0;
+              @include transition(0.4s);
+              content: "";
+              background-color: $secondary-color;
+              height: 4px;
+              border-radius: 2px;
+              left: 0;
+              bottom: 0;
+            }
+          }
+          .active, a.active {
+            &::before {
+              width: 100%;
+            }
+          }
+        }
+      }
+      //header_phone
+      .header_phone {
+        @include flex;
+        @include align-items(center);
+        i {font-size: 21px; color: $base-color;}
+        a {
+          padding-left: 10px;
+          color: $base-color;
+          font-size: 21px;
+          text-decoration: none;
+        }
+      }
+      //hamburger
+      .hamburger {
+        display: none;
+        position: fixed;
+        top: 102px;
+        right: 15px;
+        cursor: pointer;
+        z-index: 999;
+        i {
+          color: $base-color;
+          font-size: 30px;
+          cursor: pointer;
+          @include transition(0.4s);
+        }
+      }
+
+      //Notebook
+      @include notebook {
+        //menu
+        .menu {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100vh;
+          background-color: $secondary-color;
+          z-index: 2;
+          text-align: center;
+          @include flex();
+          @include flex-direction(column);
+          @include justify-content(center);
+          @include scale(0);
+          opacity: 0;
+          transition: opacity 650ms;
+          li {
+            display: block;
+            margin-right: 0;
+            padding-bottom: 30px;
+            &:last-child {
+              padding-bottom: 0;
+            }
+            a {
+              font-size: 18px;
+              @include weight(bold);
+              color: $primary-color;
+              &::before {
+                background-color: $base-color;
+              }
+              &:hover {
+                color: $base-color;
+              }
+            }
+            ul {
+              width: 100%;
+              top: 30px;
+              padding: 15px 0;
+              li {
+                padding-bottom: 12px;
+                &:last-child {
+                  padding-bottom: 0;
+                }
+                a {font-size: 12px; line-height: normal;}
+              }
+            }
+            .active {
+              &::before {background-color: $base-color;}
+            }
+          }
+        }
+        .menu.open {
+          opacity: 1;
+          @include scale(1);
+        }
+        //header_phone
+        .header_phone {display: none}
+        .hamburger {
+          display: block;
+          .icon-cancel {display: none;}
+          .icon-cancel.open {display: block;}
+          .icon-menu.open {display: none;}
+        }
+      }
+    }
+  }
+  //page_text
+  .page_text {
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    @include translate(-50%, -50%);
+    text-align: center;
+    @include weight(500);
+    line-height: normal;
+    font-size: 72px;
+    text-transform: capitalize;
+    color: $base-color;
+    //Large
+    @include large {
+      font-size: 50px;
+    }
+    //Notebook
+    @include notebook {
+      font-size: 40px;
+    }
+    //Tablet
+    @include tablet {
+      font-size: 30px;
+    }
+    //X-Tablet
+    @include x-tablet {
+      font-size: 20px;
+    }
+    //Mobil
+    @include mobil {
+      font-size: $large-size;
+    }
+  }
+}
+
+#about_page
+#header.fixed {
+  top: 0;
+  @include transition(0.3s);
+  background-color: $primary-color;
+  @include box-shadow2(0px, 3px, 10px, 0px, rgba(0,0,0,0.36));
+  .header-wrapper {
+    .header_phone {
+      i,a {color: $base-color;}
+    }
+    //hamburger
+    .hamburger {top: 52px}
+  }
+}
+
+//About_İnfo#
+#about_info {
+  width: 100%;
+  padding: 100px 0 300px 0;
+  background-color: $three-color;
+  //about_info
+  .about_info {
+    //&_popup
+    &_popup {
+      h5 {
+        font-size: 50px;
+        letter-spacing: 0.3px;
+        text-transform: capitalize;
+        @include weight(500);
+        line-height: normal;
+        color: $base-color;
+        margin-bottom: 0;
+        span {color: $secondary-color}
+      }
+      h6 {
+        margin-bottom: 0;
+        padding-top: 30px;
+        font-size: 30px;
+        letter-spacing: 0.3px;
+        text-transform: capitalize;
+        @include weight(500);
+        line-height: normal;
+        color: $base-color;
+      }
+      //texts
+      .texts {
+        padding-top: 35px;
+        //text
+        .text {
+          p {
+            color: $base-color;
+            font-size: $large-size;
+            line-height: 24px;
+            @include weight(regular);
+            margin-bottom: 0;
+          }
+        }
+      }
+      //popup
+      .popup {
+        padding-top: 40px;
+        display: inline-block;
+        //popup_video
+        .popup_video {
+          @include flex;
+          @include align-items(center);
+          text-decoration: none;
+          i {color: $secondary-color; font-size: 30px;}
+          h4 {
+            padding-left: 10px;
+            @include weight(regular);
+            font-size: $large-size;
+            line-height: 24px;
+            color: $secondary-color;
+            margin-bottom: 0;
+          }
+        }
+      }
+      //Large
+      @include large {
+        h5 {font-size: 40px;}
+        h6 {font-size: 25px; padding-top: 20px;}
+        //texts
+        .texts {
+          padding-top: 30px;
+          .text {
+            margin-bottom: 20px;
+            &:last-child {
+              margin-bottom: 0;
+            }
+          }
+        }
+      }
+      //Notebook
+      @include notebook {
+        h5 {font-size: 30px;}
+        h6 {font-size: 20px}
+        .popup {padding-top: 30px;}
+      }
+      //Tablet
+      @include tablet {
+        h5 {font-size: 25px;}
+        h6 {font-size: 18px}
+        .popup {padding-top: 30px;}
+      }
+      //X-Tablet
+      @include x-tablet {
+        h5 {font-size: 18px;}
+        h6 {font-size: $large-size; padding-top: 15px;}
+        //texts
+        .texts {
+          padding-top: 20px;
+          .text {
+            p {font-size: $small-size; line-height: 20px;}
+          }
+        }
+        .popup {
+          padding-top: 25px;
+          //popup_video
+          .popup_video {
+            i {font-size: 20px;}
+            h4 {font-size: $small-size; line-height: 20px;}
+          }
+        }
+      }
+      //Mobil
+      @include mobil {
+        h5 {font-size: $large-size;}
+        h6 {font-size: $small-size; padding-top: 15px; line-height: 20px;}
+        //texts
+        .texts {
+          padding-top: 20px;
+          .text {
+            margin-bottom: 10px;
+            p {font-size: 12px; line-height: 20px;}
+          }
+        }
+        .popup {
+          padding-top: 20px;
+          //popup_video
+          .popup_video {
+            i {font-size: 20px;}
+            h4 {font-size: 12px; line-height: 20px;}
+          }
+        }
+      }
+    }
+    //&_culture
+    &_culture {
+      h5 {
+        font-size: 40px;
+        letter-spacing: 0.3px;
+        text-transform: capitalize;
+        @include weight(500);
+        line-height: normal;
+        color: $secondary-color;
+        margin-bottom: 0;
+      }
+      p {
+        margin-bottom: 0;
+        padding-top: 30px;
+        font-size: $large-size;
+        line-height: 24px;
+        color: $base-color;
+        @include weight(regular);
+        letter-spacing: 0.3px;
+      }
+      //social
+      .social {
+        margin-bottom: 0;
+        padding-top: 40px;
+        li {
+          display: inline-block;
+          margin-right: 15px;
+          &:last-child {
+            margin-right: 0;
+          }
+          a {
+            i {
+              display: inline-block;
+              width: 40px;
+              height: 40px;
+              line-height: 40px;
+              text-align: center;
+              @include border-radius(50%);
+              background-color: $secondary-color;
+              color: $primary-color;
+              font-size: 20px;
+            }
+          }
+        }
+      }
+      //Large
+      @include large {
+        h5 {font-size: 30px;}
+      }
+      //Notebook
+      @include notebook {
+        margin-top: 40px;
+        h5 {font-size: 25px;}
+      }
+      //Tablet
+      @include tablet {
+        h5 {font-size: 20px;}
+        p {padding-top: 20px;}
+      }
+      //X-Tablet
+      @include x-tablet {
+        h5 {font-size: $large-size;}
+        p {padding-top: 15px; font-size: $small-size; line-height: 20px;}
+        //social
+        .social {
+          padding-top: 30px;
+          li {
+            margin-right: 10px;
+            a {
+              i {
+                width: 30px;
+                height: 30px;
+                line-height: 30px;
+                font-size: $large-size;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+//About_Services#
+#about_services {
+  width: 100%;
+  padding: 250px 0 0 0;
+  //Notebook
+  @include notebook {
+    padding: 250px 0 150px 0;
+  }
+  //about_services
+  .about_services {
+    margin-top: -450px;
+    //&_item
+    &_item {
+      background-color: $five-color;
+      padding: 75px 35px;
+      h6 {
+        margin-bottom: 0;
+        padding-top: 50px;
+        line-height: normal;
+        a {
+          color: $secondary-color;
+          text-decoration: none;
+          text-transform: capitalize;
+          @include weight(500);
+          font-size: 24px;
+        }
+      }
+      p {
+        margin-bottom: 0;
+        padding-top: 17px;
+        @include weight(regular);
+        font-size: $large-size;
+        line-height: 24px;
+        color: $base-color;
+      }
+      button {
+        margin-top: 25px;
+        width: 175px;
+        height: 55px;
+        background-color: $secondary-color;
+        a {
+          color: $six-color;
+          text-decoration: none;
+          text-transform: capitalize;
+          font-size: 18px;
+          @include weight(500);
+        }
+      }
+    }
+    //Notebook
+    @include notebook {
+      //&_item
+      &_item {
+        margin-bottom: 30px;
+        padding: 60px 25px;
+        h6 {
+          padding-top: 30px;
+          a {font-size: 20px;}
+        }
+        p {font-size: $small-size; line-height: 20px;padding-top: 15px;}
+        button {
+          width: 165px;
+          height: 45px;
+          a {font-size: $large-size;}
+        }
+      }
+    }
+    //Tablet
+    @include tablet {
+      //&_item
+      &_item {
+        padding: 50px 25px;
+        h6 {
+          padding-top: 30px;
+          a {font-size: $large-size;}
+        }
+        button {
+          width: 100%;
+          height: 40px;
+          a {font-size: $small-size;}
+        }
+      }
+    }
+    //Mobil
+    @include mobil {
+      //&_item
+      &_item {
+        padding: 50px 20px;
+        h6 {
+          padding-top: 20px;
+          a {font-size: $small-size;}
+        }
+        p {font-size: 12px; line-height: 18px; padding-top: 12px;}
+        button {
+          a {font-size: 12px;}
+        }
+      }
+    }
+  }
+  //about_skills
+  .about_skills {
+    padding-top: 90px;
+    //&_item
+    &_item {
+      h5 {
+        color: $secondary-color;
+        font-size: 40px;
+        text-transform: capitalize;
+        line-height: normal;
+        @include weight(500);
+        letter-spacing: 0.3px;
+        margin-bottom: 0;
+        padding-bottom: 60px;
+      }
+      //education
+      .education {
+        //&_item
+        &_item {
+          @include flex;
+          margin-bottom: 35px;
+          &:last-child {
+            margin-bottom: 0;
+          }
+          //number
+          .number {
+            font-size: 24px;
+            line-height: 24px;
+            @include weight(500);
+            color: $base-color;
+          }
+          //text
+          .text {
+            padding-left: 15px;
+            h3 {
+              margin-bottom: 0;
+              font-size: 24px;
+              line-height: 24px;
+              color: $base-color;
+              @include weight(500);
+            }
+            h4 {
+              margin-bottom: 0;
+              padding-top: 10px;
+              color: $secondary-color;
+              font-size: $large-size;
+              line-height: 24px;
+              @include weight(500);
+            }
+          }
+        }
+      }
+      //experience
+      .experience {
+        //&_item
+        &_item {
+          @include flex;
+          margin-bottom: 35px;
+          &:last-child {
+            margin-bottom: 0;
+          }
+          //number
+          .number {
+            font-size: 24px;
+            line-height: 24px;
+            @include weight(500);
+            color: $base-color;
+          }
+          //text
+          .text {
+            padding-left: 15px;
+            h3 {
+              margin-bottom: 0;
+              font-size: 24px;
+              line-height: 24px;
+              color: $base-color;
+              @include weight(500);
+            }
+            h4 {
+              margin-bottom: 0;
+              padding-top: 10px;
+              color: $secondary-color;
+              font-size: $large-size;
+              line-height: 24px;
+              @include weight(500);
+            }
+          }
+        }
+      }
+      //skills
+      .skills {
+        width: 100%;
+        float: left;
+        .skill {
+          width: 100%;
+          float: left;
+          .skill-title, .skill-bar {
+            width: 100%;
+            float: left;
+          }
+          margin-bottom: 25px;
+          .skill-title {
+            color: $secondary-color;
+            margin-bottom: 10px;
+            @include weight(500);
+            font-size: $large-size;
+            line-height: 24px;
+          }
+          .skill-bar {
+            width: 0;
+            height: 15px;
+            background: $base-color;
+            transition: 1s cubic-bezier(1, 0, 0.5, 1);
+            -webkit-transition: 1s cubic-bezier(1, 0, 0.5, 1);
+            -ms-transition: 1s cubic-bezier(1, 0, 0.5, 1);
+          }
+        }
+        &.active .skill .skill-bar {
+          width: 100%;
+        }
+        .skill .skill-bar span {
+          float: left;
+          width: 0%;
+          background: $secondary-color;
+          height: 15px;
+          position: relative;
+          transition: 1s cubic-bezier(1, 0, 0.5, 1);
+          -webkit-transition: 1s cubic-bezier(1, 0, 0.5, 1);
+          -ms-transition: 1s cubic-bezier(1, 0, 0.5, 1);
+          b {
+            float: left;
+            width: 100%;
+            position: relative;
+            text-align: right;
+            opacity: 0;
+            font-size: $large-size;
+            color: $base-color;
+            @include weight(500);
+            top: -30px;
+          }
+        }
+      }
+    }
+    //Notebook
+    @include notebook {
+      padding-top: 60px;
+      //&_item
+      &_item {
+        margin-bottom: 30px;
+        h5 {padding-bottom: 50px; font-size: 30px;}
+        //education
+        .education, .experience {
+          //&_item
+          &_item {
+            //text
+            .text {
+              h3 {font-size: 20px;}
+              h4 {font-size: $small-size; line-height: 20px;}
+            }
+          }
+        }
+      }
+    }
+    //Tablet
+    @include tablet {
+      //&_item
+      &_item {
+        h5 {padding-bottom: 40px; font-size: 25px;}
+        //education
+        .education, .experience {
+          //&_item
+          &_item {
+            //text
+            .text {
+              h3 {font-size: 18px; line-height: 22px;}
+            }
+          }
+        }
+      }
+    }
+    //X-Tablet
+    @include x-tablet {
+      //&_item
+      &_item {
+        h5 {padding-bottom: 30px; font-size: 20px;}
+        //education
+        .education, .experience {
+          //&_item
+          &_item {
+            @include flex;
+            @include flex-direction(column);
+            //text
+            .text {
+              padding: 10px 0 0 0;
+              h3 {font-size: $large-size; line-height: 20px;}
+            }
+          }
+        }
+      }
+    }
+    //Mobil
+    @include mobil {
+      //&_item
+      &_item {
+        h5 {font-size: 18px;}
+        //education
+        .education, .experience {
+          //&_item
+          &_item {
+            @include flex;
+            @include flex-direction(column);
+            //text
+            .text {
+              padding: 10px 0 0 0;
+              h3 {font-size: $small-size; line-height: 18px;}
+              h4 {font-size: 12px; line-height: 16px; padding-top: 8px;}
+            }
+          }
+        }
+        //skills
+        .skills {
+          //skill
+          .skill {
+            //skill-title
+            .skill-title {
+              font-size: $small-size; line-height: 20px;
+            }
+          }
+          //skill .skill-bar span
+          .skill .skill-bar span {
+            b {font-size: $small-size;}
+          }
+        }
+      }
+    }
+  }
+  //about_services_contact
+  .about_services_contact {
+    position: relative;
+    top: 140px;
+    z-index: 1;
+    @include flex;
+    @include justify-content(space-between);
+    @include align-items(center);
+    width: 100%;
+    padding: 50px;
+    background-color: $secondary-color;
+    //&_text
+    &_text {
+      h2  {
+        margin-bottom: 0;
+        color: $primary-color;
+        @include weight(500);
+        font-size: 35px;
+        line-height: normal;
+      }
+      p {
+        margin-bottom: 0;
+        padding-top: 15px;
+        color: $primary-color;
+        @include weight(regular);
+        font-size: $large-size;
+        line-height: 22px;
+      }
+    }
+    //&_button
+    &_button {
+      button {
+        width: 175px;
+        height: 55px;
+        background-color: $primary-color;
+        a {
+          color: $secondary-color;
+          text-decoration: none;
+          font-size: 18px;
+          line-height: 20px;
+          @include weight(400);
+        }
+      }
+    }
+    //Notebook
+    @include notebook {
+      top: 50px;
+      @include flex;
+      @include flex-direction(column);
+      text-align: center;
+      padding: 40px;
+      //&_text
+      &_text {
+        h2 {font-size: 25px;}
+        p {font-size: $small-size; line-height: 20px; padding-top: 7px;}
+      }
+      //&_button
+      &_button {
+        margin-top: 25px;
+        button {
+          height: 40px;
+          a {font-size: $large-size; line-height: 20px;}
+        }
+      }
+    }
+    //X-Tablet
+    @include x-tablet {
+      padding: 25px;
+      //&_text
+      &_text {
+        h2 {font-size: 20px;}
+      }
+      //&_button
+      &_button {
+        margin-top: 20px;
+        button {
+          height: 35px;
+          a {font-size: $small-size;}
+        }
+      }
+    }
+    //Mobil
+    @include mobil {
+      padding: 20px;
+      //&_text
+      &_text {
+        h2 {font-size: $large-size;}
+        p {font-size: 12px; line-height: 18px;}
+      }
+      //&_button
+      &_button {
+        button {
+          width: 100px;
+          height: 30px;
+          a {font-size: 12px; line-height: 16px;}
+        }
+      }
+    }
+  }
+}
+
+//About_Clients#
+#about_clients {
+  width: 100%;
+  padding-top: 200px;
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60%;
+    height: 100%;
+    background-color: $three-color;
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40%;
+    height: 100%;
+    background-color: $secondary-color;
+  }
+  //about_clients
+  .about_clients {
+    //&_owl
+    &_owl {
+      //item
+      .item {
+        img {width: 20%; @include border-radius(50%);}
+        p {
+          padding-top: 40px;
+          font-style: italic;
+          font-size: 30px;
+          line-height: 35px;
+          color: $base-color;
+          @include weight(400);
+          margin-bottom: 0;
+        }
+        h5 {
+          margin-bottom: 0;
+          padding-top: 35px;
+          font-size: 24px;
+          color: $secondary-color;
+          line-height: 28px;
+          @include weight(500);
+        }
+        h6 {
+          margin-bottom: 0;
+          padding-top: 10px;
+          color: $base-color;
+          font-size: $large-size;
+          line-height: 24px;
+          @include weight(400);
+        }
+      }
+    }
+    //&_image
+    &_image {
+      position: relative;
+      z-index: 1;
+      img {width: 100%;}
+    }
+  }
+  //Notebook
+  @include notebook {
+    padding-top: 150px;
+    //about_clients
+    .about_clients {
+      //&_owl
+      &_owl {
+        //item
+        .item {
+          img {width: 30%;}
+          p {font-size: 25px; line-height: 30px;}
+          h5 {font-size: 20px; padding-top: 25px;}
+          h6 {padding-top: 5px;}
+        }
+      }
+      //&_image
+      &_image {margin-top: 30px;}
+    }
+  }
+  //Tablet
+  @include tablet {
+    padding-top: 100px;
+    //about_clients
+    .about_clients {
+      //&_owl
+      &_owl {
+        //item
+        .item {
+          img {width: 40%;}
+          p {font-size: 20px; line-height: 25px; padding-top: 30px;}
+          h5 {font-size: 18px; padding-top: 22px;}
+          h6 {padding-top: 5px; font-size: $small-size; line-height: 20px;}
+        }
+      }
+    }
+  }
+  //X-Tablet
+  @include x-tablet {
+    //about_clients
+    .about_clients {
+      //&_owl
+      &_owl {
+        //item
+        .item {
+          img {width: 50%;}
+          p {font-size: $large-size; line-height: 20px; padding-top: 35px;}
+          h5 {font-size: $large-size; padding-top: 22px; line-height: 22px;}
+          h6 {padding-top: 5px; font-size: $small-size; line-height: 20px;}
+        }
+      }
+    }
+  }
+  //Mobil
+  @include mobil {
+    //about_clients
+    .about_clients {
+      //&_owl
+      &_owl {
+        //item
+        .item {
+          img {width: 50%;}
+          p {font-size: $small-size; line-height: 20px; padding-top: 35px;}
+          h5 {font-size: $small-size; padding-top: 20px; line-height: 22px;}
+          h6 {padding-top: 2px; font-size: 12px; line-height: 17px;}
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,253 @@
+/////HEADER
+
+//Header#
+#header {
+  width: 100%;
+  background-color: transparent;
+  position: fixed;
+  top: 50px;
+  z-index: 2;
+  //header-wrapper
+  .header-wrapper {
+    @include flex();
+    @include justify-content(space-between);
+    @include align-items(center);
+    height: 150px;
+    position: relative;
+    //logo
+    .logo {
+      position: relative;
+      z-index: 3;
+      img {cursor: pointer;}
+    }
+    //menu
+    .menu {
+      margin-bottom: 0;
+      >li {
+        display: inline-block;
+        position: relative;
+        margin-right: 30px;
+        &:last-child {
+          margin-right: 0;
+        }
+        >a {
+          color: $base-color;
+          @include weight(semi-bold);
+          text-decoration: none;
+          font-size: $large-size;
+          position: relative;
+          &::before {
+            position: absolute;
+            width: 0;
+            margin: -4px 0;
+            @include transition(0.4s);
+            content: "";
+            background-color: $secondary-color;
+            height: 4px;
+            border-radius: 2px;
+            left: 0;
+            bottom: 0;
+          }
+          &:hover {
+            color: $secondary-color;
+            &::before {
+              width: 100%;
+            }
+          }
+          &:not(:only-child):after {
+            padding-left: 10px;
+            content: ' \e805';
+            font-family: "rojo-font";
+          }
+        }
+        ul {
+          margin-bottom: 0;
+          width: 200px;
+          position: absolute;
+          top: 34px;
+          left: 0;
+          z-index: 1;
+          padding: 15px 0 15px 10px;
+          background-color: $four-color;
+          opacity: 0;
+          visibility: hidden;
+          @include transition(0.4s);
+          li {
+            display: block;
+            padding-bottom: 15px;
+            &:last-child {
+              padding-bottom: 0;
+            }
+            a {
+              color: $base-color;
+              @include weight(bold);
+              text-decoration: none;
+              font-size: $large-size;
+              text-transform: uppercase;
+              position: relative;
+              &::before {
+                position: absolute;
+                width: 0;
+                margin: -3px 0;
+                @include transition(0.4s);
+                content: "";
+                background-color: $secondary-color;
+                height: 3px;
+                border-radius: 2px;
+                left: 0;
+                bottom: 0;
+              }
+              &:hover {
+                color: $secondary-color;
+                &::before {
+                  width: 100%;
+                }
+              }
+            }
+          }
+        }
+        &:hover {
+          ul {
+            opacity: 1;
+            visibility: visible;
+          }
+        }
+        .active {
+          position: relative;
+          &::before {
+            position: absolute;
+            width: 0;
+            margin: -5px 0;
+            @include transition(0.4s);
+            content: "";
+            background-color: $secondary-color;
+            height: 4px;
+            border-radius: 2px;
+            left: 0;
+            bottom: 0;
+          }
+        }
+        .active, a.active {
+          &::before {
+            width: 100%;
+          }
+        }
+      }
+    }
+    //header_phone
+    .header_phone {
+      @include flex;
+      @include align-items(center);
+      i {font-size: 21px; color: $primary-color;}
+      a {
+        padding-left: 10px;
+        color: $primary-color;
+        font-size: 21px;
+        text-decoration: none;
+      }
+    }
+    //hamburger
+    .hamburger {
+      display: none;
+      position: fixed;
+      top: 102px;
+      right: 15px;
+      cursor: pointer;
+      z-index: 999;
+      i {
+        color: $base-color;
+        font-size: 30px;
+        cursor: pointer;
+        @include transition(0.4s);
+      }
+    }
+
+    //Large
+    @include large {
+      .header_phone {
+        i,a {color: $base-color;}
+      }
+    }
+
+    //Notebook
+    @include notebook {
+      //menu
+      .menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: $secondary-color;
+        z-index: 2;
+        text-align: center;
+        @include flex();
+        @include flex-direction(column);
+        @include justify-content(center);
+        @include scale(0);
+        opacity: 0;
+        transition: opacity 650ms;
+        li {
+          display: block;
+          margin-right: 0;
+          padding-bottom: 30px;
+          &:last-child {
+            padding-bottom: 0;
+          }
+          a {
+            font-size: 18px;
+            @include weight(bold);
+            color: $primary-color;
+            &::before {
+              background-color: $base-color;
+            }
+            &:hover {
+              color: $base-color;
+            }
+          }
+          ul {
+            width: 100%;
+            top: 30px;
+            padding: 15px 0;
+            li {
+              padding-bottom: 12px;
+              &:last-child {
+                padding-bottom: 0;
+              }
+              a {font-size: 12px; line-height: normal;}
+            }
+          }
+          .active {
+            &::before {background-color: $base-color;}
+          }
+        }
+      }
+      .menu.open {
+        opacity: 1;
+        @include scale(1);
+      }
+      //header_phone
+      .header_phone {display: none}
+      .hamburger {
+        display: block;
+        .icon-cancel {display: none;}
+        .icon-cancel.open {display: block;}
+        .icon-menu.open {display: none;}
+      }
+    }
+  }
+}
+
+#header.fixed {
+  top: 0;
+  @include transition(0.3s);
+  background-color: $primary-color;
+  @include box-shadow2(0px, 3px, 10px, 0px, rgba(0,0,0,0.36));
+  .header-wrapper {
+    .header_phone {
+      i,a {color: $base-color;}
+    }
+    //hamburger
+    .hamburger {top: 52px}
+  }
+}

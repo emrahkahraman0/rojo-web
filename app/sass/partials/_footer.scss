@@ -1,0 +1,94 @@
+/////FOOTER
+
+//Footer#
+#footer {
+  width: 100%;
+  padding: 160px 0 160px 0;
+  background-image: url("../../img/footer-bg.png");
+  //footer
+  .footer {
+    width: 570px;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 15px;
+    //&_center
+    &_center {
+      text-align: center;
+      p {
+        color: $base-color;
+        @include weight(regular);
+        font-size: $large-size;
+        line-height: 24px;
+      }
+      //social
+      .social {
+        margin-bottom: 0;
+        padding-top: 50px;
+        li {
+          display: inline-block;
+          margin-right: 15px;
+          &:last-child {
+            margin-right: 0;
+          }
+          a {
+            i {
+              display: inline-block;
+              width: 40px;
+              height: 40px;
+              line-height: 40px;
+              text-align: center;
+              @include border-radius(50%);
+              background-color: $secondary-color;
+              color: $primary-color;
+              font-size: 20px;
+            }
+          }
+        }
+      }
+      //copyright
+      .copyright {
+        padding-top: 90px;
+        color: $base-color;
+        @include weight(regular);
+        font-size: $large-size;
+        line-height: 24px;
+      }
+    }
+    //X-Tablet
+    @include x-tablet {
+      &_center {
+        p {font-size: $small-size; line-height: 21px;}
+        .social {
+          padding-top: 30px;
+          li {}
+        }
+        .copyright {font-size: $small-size; line-height: 22px; padding-top: 50px;}
+      }
+    }
+    //Mobil
+    @include mobil {
+      &_center {
+        p {font-size: 12px; line-height: 18px;}
+        .social {
+          padding-top: 30px;
+          li {
+            margin-right: 7px;
+            a {
+              i {
+                width: 30px;
+                height: 30px;
+                line-height: 30px;
+                font-size: $small-size;
+              }
+            }
+          }
+        }
+        .copyright {font-size: 12px; line-height: 18px; padding-top: 40px;}
+      }
+    }
+  }
+  //Notebook
+  @include notebook {
+    padding: 100px 0 100px 0;
+  }
+}

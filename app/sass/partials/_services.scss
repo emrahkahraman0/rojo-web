@@ -1,0 +1,715 @@
+/////SERVİCES
+
+//Services_page
+#services_page {
+  width: 100%;
+  height: 500px;
+  @include bg-size(cover);
+  background: linear-gradient( to bottom, rgba(12, 0, 35, .8), rgba(12, 0, 35, .8)), url("https://via.placeholder.com/1920x500");
+  background-position: center;
+  position: relative;
+  //Header#
+  #header {
+    width: 100%;
+    background-color: transparent;
+    position: fixed;
+    top: 50px;
+    z-index: 2;
+    //header-wrapper
+    .header-wrapper {
+      @include flex();
+      @include justify-content(space-between);
+      @include align-items(center);
+      height: 150px;
+      position: relative;
+      //logo
+      .logo {
+        position: relative;
+        z-index: 3;
+        img {cursor: pointer;}
+      }
+      //menu
+      .menu {
+        margin-bottom: 0;
+        >li {
+          display: inline-block;
+          position: relative;
+          margin-right: 30px;
+          &:last-child {
+            margin-right: 0;
+          }
+          >a {
+            color: $base-color;
+            @include weight(semi-bold);
+            text-decoration: none;
+            font-size: $large-size;
+            position: relative;
+            &::before {
+              position: absolute;
+              width: 0;
+              margin: -4px 0;
+              @include transition(0.4s);
+              content: "";
+              background-color: $secondary-color;
+              height: 4px;
+              border-radius: 2px;
+              left: 0;
+              bottom: 0;
+            }
+            &:hover {
+              color: $secondary-color;
+              &::before {
+                width: 100%;
+              }
+            }
+            &:not(:only-child):after {
+              padding-left: 10px;
+              content: ' \e805';
+              font-family: "rojo-font";
+            }
+          }
+          ul {
+            margin-bottom: 0;
+            width: 200px;
+            position: absolute;
+            top: 34px;
+            left: 0;
+            z-index: 1;
+            padding: 15px 0 15px 10px;
+            background-color: $four-color;
+            opacity: 0;
+            visibility: hidden;
+            @include transition(0.4s);
+            li {
+              display: block;
+              padding-bottom: 15px;
+              &:last-child {
+                padding-bottom: 0;
+              }
+              a {
+                color: $base-color;
+                @include weight(bold);
+                text-decoration: none;
+                font-size: $large-size;
+                text-transform: uppercase;
+                position: relative;
+                &::before {
+                  position: absolute;
+                  width: 0;
+                  margin: -3px 0;
+                  @include transition(0.4s);
+                  content: "";
+                  background-color: $secondary-color;
+                  height: 3px;
+                  border-radius: 2px;
+                  left: 0;
+                  bottom: 0;
+                }
+                &:hover {
+                  color: $secondary-color;
+                  &::before {
+                    width: 100%;
+                  }
+                }
+              }
+            }
+          }
+          &:hover {
+            ul {
+              opacity: 1;
+              visibility: visible;
+            }
+          }
+          .active {
+            position: relative;
+            &::before {
+              position: absolute;
+              width: 0;
+              margin: -5px 0;
+              @include transition(0.4s);
+              content: "";
+              background-color: $secondary-color;
+              height: 4px;
+              border-radius: 2px;
+              left: 0;
+              bottom: 0;
+            }
+          }
+          .active, a.active {
+            &::before {
+              width: 100%;
+            }
+          }
+        }
+      }
+      //header_phone
+      .header_phone {
+        @include flex;
+        @include align-items(center);
+        i {font-size: 21px; color: $base-color;}
+        a {
+          padding-left: 10px;
+          color: $base-color;
+          font-size: 21px;
+          text-decoration: none;
+        }
+      }
+      //hamburger
+      .hamburger {
+        display: none;
+        position: fixed;
+        top: 102px;
+        right: 15px;
+        cursor: pointer;
+        z-index: 999;
+        i {
+          color: $base-color;
+          font-size: 30px;
+          cursor: pointer;
+          @include transition(0.4s);
+        }
+      }
+
+      //Notebook
+      @include notebook {
+        //menu
+        .menu {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100vh;
+          background-color: $secondary-color;
+          z-index: 2;
+          text-align: center;
+          @include flex();
+          @include flex-direction(column);
+          @include justify-content(center);
+          @include scale(0);
+          opacity: 0;
+          transition: opacity 650ms;
+          li {
+            display: block;
+            margin-right: 0;
+            padding-bottom: 30px;
+            &:last-child {
+              padding-bottom: 0;
+            }
+            a {
+              font-size: 18px;
+              @include weight(bold);
+              color: $primary-color;
+              &::before {
+                background-color: $base-color;
+              }
+              &:hover {
+                color: $base-color;
+              }
+            }
+            ul {
+              width: 100%;
+              top: 30px;
+              padding: 15px 0;
+              li {
+                padding-bottom: 12px;
+                &:last-child {
+                  padding-bottom: 0;
+                }
+                a {font-size: 12px; line-height: normal;}
+              }
+            }
+            .active {
+              &::before {background-color: $base-color;}
+            }
+          }
+        }
+        .menu.open {
+          opacity: 1;
+          @include scale(1);
+        }
+        //header_phone
+        .header_phone {display: none}
+        .hamburger {
+          display: block;
+          .icon-cancel {display: none;}
+          .icon-cancel.open {display: block;}
+          .icon-menu.open {display: none;}
+        }
+      }
+    }
+  }
+  //page_text
+  .page_text {
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    @include translate(-50%, -50%);
+    text-align: center;
+    @include weight(500);
+    line-height: normal;
+    font-size: 72px;
+    text-transform: capitalize;
+    color: $base-color;
+    //Large
+    @include large {
+      font-size: 50px;
+    }
+    //Notebook
+    @include notebook {
+      font-size: 40px;
+    }
+    //Tablet
+    @include tablet {
+      font-size: 30px;
+    }
+    //X-Tablet
+    @include x-tablet {
+      font-size: 20px;
+    }
+    //Mobil
+    @include mobil {
+      font-size: $large-size;
+    }
+  }
+}
+
+#services_page
+#header.fixed {
+  top: 0;
+  @include transition(0.3s);
+  background-color: $primary-color;
+  @include box-shadow2(0px, 3px, 10px, 0px, rgba(0,0,0,0.36));
+  .header-wrapper {
+    .header_phone {
+      i,a {color: $base-color;}
+    }
+    //hamburger
+    .hamburger {top: 52px}
+  }
+}
+
+//Our_Services#
+#our_services {
+  width: 100%;
+  padding: 100px 0 60px 0;
+  background-color: $three-color;
+  //our_services
+  .our_services {
+    &_item {
+      padding: 80px 40px;
+      background-color: $five-color;
+      @include transition(0.3s);
+      margin-bottom: 40px;
+      h6 {
+        margin-bottom: 0;
+        padding-top: 45px;
+        line-height: 30px;
+        a {
+          color: $secondary-color;
+          font-size: 24px;
+          text-transform: capitalize;
+          @include weight(500);
+          text-decoration: none;
+        }
+      }
+      p {
+        margin-bottom: 0;
+        padding-top: 18px;
+        font-size: $large-size;
+        line-height: 24px;
+        letter-spacing: 0.3px;
+      }
+      button {
+        margin-top: 35px;
+        width: 175px;
+        height: 55px;
+        background-color: $secondary-color;
+        a {
+          color: $six-color;
+          text-transform: capitalize;
+          @include weight(400);
+          font-size: 18px;
+          text-decoration: none;
+        }
+      }
+      &:hover {
+        background-color: $secondary-color;
+        h6 {
+          a {color: $primary-color;}
+        }
+        p {color: $primary-color;}
+        button {
+          background-color: $primary-color;
+          a {color: $base-color;}
+        }
+      }
+      //Notebook
+      @include notebook {
+        padding: 60px 30px;
+        h6 { line-height: 25px; padding-top: 30px;
+          a {font-size: 20px;}
+        }
+        p {font-size: $small-size; line-height: 20px; padding-top: 15px;}
+        button {
+          height: 45px; margin-top: 30px;
+          a {font-size: $large-size;}
+        }
+      }
+      //Tablet
+      @include tablet {
+        h6 { line-height: 20px; padding-top: 25px;
+          a {font-size: 18px;}
+        }
+        button {
+          height: 35px;
+          a {font-size: $small-size;}
+        }
+      }
+      //X-Tablet
+      @include x-tablet {
+        padding: 50px 25px;
+        h6 { padding-top: 20px; line-height: 20px;
+          a {font-size: $large-size;}
+        }
+        button {width: 100%; height: 35px; line-height: 20px}
+      }
+      //Mobil
+      @include mobil {
+        padding: 40px 20px;
+        h6 { line-height: 18px;
+          a {font-size: $small-size;}
+        }
+        p {font-size: 12px; line-height: 17px; padding-top: 10px;}
+        button {
+          margin-top: 25px;
+          a {font-size: 12px;}
+        }
+      }
+    }
+  }
+}
+
+//Our_Pricing#
+#our_pricing {
+  width: 100%;
+  padding: 100px 0 100px 0;
+  //title
+  .title {
+    h6 {
+      color: $base-color;
+      font-size: 50px;
+      @include weight(500);
+      line-height: normal;
+      text-transform: capitalize;
+      margin-bottom: 0;
+      span {color: $secondary-color;}
+    }
+    p {
+      padding-top: 30px;
+      color: $base-color;
+      font-size: $large-size;
+      line-height: 24px;
+      @include weight(400);
+      margin-bottom: 0;
+    }
+    //Notebook
+    @include notebook {
+      h6 {font-size: 35px;}
+    }
+    //X-Tablet
+    @include x-tablet {
+      h6 {font-size: 25px;}
+    }
+    //Mobil
+    @include mobil {
+      h6 {font-size: 20px;}
+      p {padding-top: 20px; font-size: $small-size; line-height: 20px;}
+    }
+  }
+  //our_pricing
+  .our_pricing {
+    padding-top: 90px;
+    //&_item
+    &_item {
+      background-color: $three-color;
+      padding: 50px 40px;
+      @include transition(0.3s);
+      h5,h6,p,ul {margin-bottom: 0;}
+      h5 {
+        font-size: $large-size;
+        line-height: normal;
+        color: $base-color;
+        @include weight(400);
+        text-transform: capitalize;
+      }
+      h6 {
+        padding-top: 15px;
+        color: $secondary-color;
+        font-size: 35px;
+        line-height: normal;
+        @include weight(900);
+      }
+      p {
+        padding-top: 15px;
+        color: $four-color;
+        font-style: italic;
+        font-size: $large-size;
+        line-height: normal;
+        @include weight(400);
+      }
+      ul {
+        padding-top: 45px;
+        li {
+          display: block;
+          padding: 0 0 25px 40px;
+          &:last-child {
+            padding: 0 0 0 40px;
+          }
+          a {
+            color: $base-color;
+            text-decoration: none;
+            @include weight(400);
+            font-size: $large-size;
+            line-height: normal;
+            position: relative;
+            &::before {
+              content: '\e80b';
+              font-family: "rojo-font";
+              display: inline-block;
+              color: $three-color;
+              font-size: $large-size;
+              width: 20px;
+              height: 20px;
+              line-height: 20px;
+              text-align: center;
+              background-color: $secondary-color;
+              @include border-radius(50%);
+              position: absolute;
+              top: 0;
+              left: -40px;
+            }
+          }
+        }
+      }
+      button {
+        margin-top: 80px;
+        width: 100%;
+        padding: 15px 0;
+        background-color: $secondary-color;
+        a {
+          color: $primary-color;
+          font-size: $large-size;
+          line-height: normal;
+          @include weight(400);
+          text-decoration: none;
+        }
+      }
+      &:hover {
+        background-color: $five-color;
+      }
+    }
+  }
+  //Notebook
+  @include notebook {
+    padding: 100px 0 70px 0;
+    .our_pricing {
+      &_item {
+        margin-bottom: 30px;
+        h6 {font-size: 30px;}
+        button {padding: 10px 0;}
+      }
+    }
+  }
+  //X-Tablet
+  @include x-tablet {
+    .our_pricing {
+      &_item {
+        padding: 40px 30px;
+        h5 {font-size: $small-size}
+        h6 {font-size: 25px;}
+        p {font-size: $small-size}
+        ul {
+          li {
+            padding: 0 0 20px 35px;
+            &:last-child {
+              padding: 0 0 0 35px;
+            }
+            a {
+              font-size: $small-size;
+              &::before {top: -2px; left: -35px;}
+            }
+          }
+        }
+        button {
+          margin-top: 60px; padding: 10px 0;
+          a {font-size: $small-size;}
+        }
+      }
+    }
+  }
+  //Mobil
+  @include mobil {
+    .our_pricing {
+      text-align: center;
+      &_item {
+        padding: 30px 15px;
+        h5 {font-size: $small-size}
+        h6 {font-size: 18px;}
+        p {font-size: 12px; line-height: 18px;}
+        ul {
+          text-align: center;
+          li {
+            padding: 0 0 15px 35px;
+            &:last-child {
+              padding: 0 0 0 35px;
+            }
+            a {
+              font-size: 12px;
+              &::before {
+                width: 16px; height: 16px; line-height: 16px;
+                top: -2px; left: -30px; font-size: 12px;
+              }
+            }
+          }
+        }
+        button {
+          margin-top: 50px; padding: 6px 0;
+          a {font-size: 12px;}
+        }
+      }
+    }
+  }
+}
+
+//Services_Clients#
+#services_clients {
+  width: 100%;
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60%;
+    height: 100%;
+    background-color: $secondary-color;
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40%;
+    height: 100%;
+    background-color: $three-color;
+  }
+  //services_clients
+  .services_clients {
+    //&_owl
+    &_owl {
+      //item
+      .item {
+        img {width: 20%; @include border-radius(50%);}
+        p {
+          padding-top: 40px;
+          font-style: italic;
+          font-size: 30px;
+          line-height: 35px;
+          color: $base-color;
+          @include weight(400);
+          margin-bottom: 0;
+        }
+        h5 {
+          margin-bottom: 0;
+          padding-top: 35px;
+          font-size: 24px;
+          color: $secondary-color;
+          line-height: 28px;
+          @include weight(500);
+        }
+        h6 {
+          margin-bottom: 0;
+          padding-top: 10px;
+          color: $base-color;
+          font-size: $large-size;
+          line-height: 24px;
+          @include weight(400);
+        }
+      }
+    }
+    //&_image
+    &_image {
+      position: relative;
+      z-index: 1;
+      img {width: 100%;}
+    }
+  }
+  //Notebook
+  @include notebook {
+    padding-top: 150px;
+    //services_clients
+    .services_clients {
+      //&_owl
+      &_owl {
+        //item
+        .item {
+          img {width: 30%;}
+          p {font-size: 25px; line-height: 30px;}
+          h5 {font-size: 20px; padding-top: 25px;}
+          h6 {padding-top: 5px;}
+        }
+      }
+      //&_image
+      &_image {margin-top: 30px;}
+    }
+  }
+  //Tablet
+  @include tablet {
+    padding-top: 100px;
+    //services_clients
+    .services_clients {
+      //&_owl
+      &_owl {
+        //item
+        .item {
+          img {width: 40%;}
+          p {font-size: 20px; line-height: 25px; padding-top: 30px;}
+          h5 {font-size: 18px; padding-top: 22px;}
+          h6 {padding-top: 5px; font-size: $small-size; line-height: 20px;}
+        }
+      }
+    }
+  }
+  //X-Tablet
+  @include x-tablet {
+    //services_clients
+    .services_clients {
+      //&_owl
+      &_owl {
+        //item
+        .item {
+          img {width: 50%;}
+          p {font-size: $large-size; line-height: 20px; padding-top: 35px;}
+          h5 {font-size: $large-size; padding-top: 20px; line-height: 20px;}
+          h6 {padding-top: 5px; font-size: $small-size; line-height: 20px;}
+        }
+      }
+    }
+  }
+  //Mobil
+  @include mobil {
+    //services_clients
+    .services_clients {
+      //&_owl
+      &_owl {
+        //item
+        .item {
+          img {width: 50%;}
+          p {font-size: $small-size; line-height: 20px; padding-top: 35px;}
+          h5 {font-size: $small-size; padding-top: 10px; line-height: 22px;}
+          h6 {padding-top: 2px; font-size: 12px; line-height: 17px;}
+        }
+      }
+    }
+  }
+}
