@@ -287,3 +287,134 @@
     .hamburger {top: 52px}
   }
 }
+
+//Services_Single#
+#service_single {
+  width: 100%;
+  padding: 100px 0 100px 0;
+  background-color: $three-color;
+  //service_single
+  .service_single {
+    //&_image
+    &_image {
+      img {width: 100%;}
+    }
+    //&_text
+    &_text {
+      p {
+        margin-bottom: 0;
+        font-size: $large-size;
+        line-height: 24px;
+        letter-spacing: 0.3px;
+      }
+    }
+    //Notebook
+    @include notebook {
+      text-align: center;
+      //&_text
+      &_text {margin-top: 40px;}
+    }
+    //Tablet
+    @include tablet {
+      //&_text
+      &_text {
+        p {font-size: $small-size; line-height: 22px;}
+      }
+    }
+    //Mobil
+    @include mobil {
+      //&_text
+      &_text {
+        p {font-size: 12px; line-height: 20px;}
+      }
+    }
+  }
+}
+
+//service_bottom#
+#service_bottom {
+  width: 100%;
+  padding: 70px 0 70px 0;
+  //service_bottom
+  .service_bottom {
+    //&_item
+    &_item {
+      img {width: auto;}
+      h6 {
+        margin-bottom: 0;
+        padding-top: 25px;
+        line-height: 22px;
+        a {
+          color: $base-color;
+          font-size: 18px;
+          text-transform: capitalize;
+          text-decoration: none;
+          letter-spacing: 0.3px;
+        }
+      }
+      p {
+        margin-bottom: 0;
+        padding-top: 10px;
+        font-size: $small-size;
+        color: $base-color;
+        line-height: 22px;
+      }
+      button {
+        margin-top: 20px;
+        background-color: $secondary-color;
+        padding: 10px 30px;
+        a {
+          color: $three-color;
+          font-size: $large-size;
+          text-decoration: none;
+        }
+      }
+      //Tablet
+      @include tablet {
+        h6 {
+          padding-top: 20px;
+          a {font-size: $large-size;}
+        }
+        p {padding-top: 8px; font-size: $small-size; line-height: 20px;}
+        button {
+          width: 100%;
+          padding: 8px 0;
+          a {font-size: $small-size;}
+        }
+      }
+      //Mobil
+      @include mobil {
+        h6 {
+          line-height: 20px;
+          a {font-size: $small-size;}
+        }
+        p {font-size: 12px; line-height: 18px;}
+        button {
+          width: 100%;
+          padding: 5px 0;
+          a {font-size: 12px;}
+        }
+      }
+    }
+    //owl-dots
+    .owl-dots {
+      margin-top: 30px;
+      //owl-dot
+      .owl-dot {
+        span {
+          width: 25px;
+          height: 7px;
+          background-color: $four-color;
+          @include transition(0.3s);
+        }
+      }
+      //active
+      .active {
+        span {
+          width: 40px;
+          background-color: $secondary-color;
+        }
+      }
+    }
+  }
+}

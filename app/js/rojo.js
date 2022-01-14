@@ -105,14 +105,34 @@ $(document).ready(function(){
 
     //Load-More
     $(function () {
-        $(".our_portfolio_item").slice(0, 3).show();
+        $(".our_portfolio_item").slice(0, 4).show();
         $("#loadMore").on('click', function (e) {
             e.preventDefault();
-            $(".our_portfolio_item:hidden").slice(0, 3).slideDown();
+            $(".our_portfolio_item:hidden").slice(0, 4).slideDown();
             if ($(".our_portfolio_item:hidden").length == 0) {
                 $("#load").fadeOut('slow');
             }
         });
+    });
+
+    //Service_Bottom
+    $('.service_bottom').owlCarousel({
+        loop:true,
+        margin:25,
+        nav:false,
+        dots:true,
+        autoplay:true,
+        autoplayTimeout:4000,
+        autoplayHoverPause:true,
+        responsive:{
+            0:{items:1},
+            575:{items:2},
+            900:{items:2},
+            1000:{items:3},
+            1200:{items:3},
+            1400:{items:3},
+            1600:{items:3},
+        }
     });
 
 });
