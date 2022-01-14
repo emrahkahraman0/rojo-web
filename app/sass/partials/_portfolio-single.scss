@@ -287,3 +287,167 @@
     .hamburger {top: 52px}
   }
 }
+
+//Portfolio_Single#
+#portfolio_single {
+  width: 100%;
+  padding: 100px 0 100px 0;
+  background-color: $three-color;
+  //portfolio_single
+  .portfolio_single {
+    //&_image
+    &_image {
+      //sync#
+      #sync1 {
+        //owl-nav
+        .owl-nav {
+          margin-top: 0;
+          //owl-prev,.owl-next
+          .owl-prev,.owl-next {
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            color: $base-color;
+            background-color: $secondary-color;
+            @include border-radius(50%);
+          }
+          .owl-prev {
+            position: absolute;
+            top: 50%;
+            left: 5%;
+            @include translate(-50%, -50%);
+          }
+          .owl-next {
+            position: absolute;
+            top: 50%;
+            right: 0;
+            @include translate(-50%, -50%);
+          }
+        }
+      }
+      //sync2#
+      #sync2 {margin-top: 20px;}
+      //current
+      .current .item{
+        border: 3px solid $secondary-color;
+      }
+    }
+    //&_text
+    &_text {
+      p {
+        margin-bottom: 0;
+        font-size: $large-size;
+        line-height: 24px;
+        letter-spacing: 0.3px;
+      }
+    }
+    //Notebook
+    @include notebook {
+      //&_text
+      &_text {margin-top: 40px;}
+    }
+    //Tablet
+    @include tablet {
+      //&_text
+      &_text {
+        p {font-size: $small-size; line-height: 22px;}
+      }
+    }
+    //Mobil
+    @include mobil {
+      //&_text
+      &_text {
+        p {font-size: 12px; line-height: 20px;}
+      }
+    }
+  }
+}
+
+//Portfolio_bottom#
+#portfolio_bottom {
+  width: 100%;
+  padding: 70px 0 70px 0;
+  //portfolio_bottom
+  .portfolio_bottom {
+    //&_item
+    &_item {
+      img {width: 100%;}
+      h6 {
+        margin-bottom: 0;
+        padding-top: 25px;
+        line-height: 22px;
+        a {
+          color: $secondary-color;
+          font-size: 18px;
+          text-transform: capitalize;
+          text-decoration: none;
+          letter-spacing: 0.3px;
+        }
+      }
+      p {
+        margin-bottom: 0;
+        padding-top: 10px;
+        font-size: $small-size;
+        color: $base-color;
+        line-height: 22px;
+      }
+      button {
+        margin-top: 20px;
+        background-color: $secondary-color;
+        padding: 10px 30px;
+        a {
+          color: $three-color;
+          font-size: $large-size;
+          text-decoration: none;
+        }
+      }
+      //Tablet
+      @include tablet {
+        h6 {
+          padding-top: 20px;
+          a {font-size: $large-size;}
+        }
+        p {padding-top: 8px; font-size: $small-size; line-height: 20px;}
+        button {
+          width: 100%;
+          padding: 8px 0;
+          a {font-size: $small-size;}
+        }
+      }
+      //Mobil
+      @include mobil {
+        h6 {
+          line-height: 20px;
+          a {font-size: $small-size;}
+        }
+        p {font-size: 12px; line-height: 18px;}
+        button {
+          width: 100%;
+          padding: 5px 0;
+          a {font-size: 12px;}
+        }
+      }
+    }
+    //owl-dots
+    .owl-dots {
+      margin-top: 30px;
+      //owl-dot
+      .owl-dot {
+        span {
+          width: 25px;
+          height: 7px;
+          background-color: $four-color;
+          @include transition(0.3s);
+        }
+      }
+      //active
+      .active {
+        span {
+          width: 40px;
+          background-color: $secondary-color;
+        }
+      }
+    }
+  }
+}
